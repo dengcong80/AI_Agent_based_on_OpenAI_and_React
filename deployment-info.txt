@@ -1,0 +1,24 @@
+======================================
+AI Agent System - AWS 部署信息
+======================================
+
+实例 ID: i-0d922f1b1753f585a
+公网 IP: 3.87.98.200
+区域: us-east-1
+密钥文件: ai-agent-key.pem
+安全组 ID: sg-067cf8ba8991d0051
+
+SSH 连接命令:
+ssh -i ai-agent-key.pem ec2-user@3.87.98.200
+
+前端访问地址:
+http://3.87.98.200:3000
+
+后端 API 地址:
+http://3.87.98.200:5000/api
+
+部署应用命令:
+scp -i ai-agent-key.pem -r ../backend ec2-user@3.87.98.200:/opt/ai-agent-system/
+scp -i ai-agent-key.pem -r ../frontend ec2-user@3.87.98.200:/opt/ai-agent-system/
+
+======================================

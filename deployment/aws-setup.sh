@@ -11,6 +11,7 @@ echo "🚀 开始 AWS 部署配置..."
 PROJECT_NAME="ai-agent-system"
 REGION="us-east-1"
 EC2_INSTANCE_TYPE="t3.micro"
+ROOT_VOLUME_SIZE=16
 KEY_NAME="ai-agent-key"
 
 # 颜色输出
@@ -101,11 +102,11 @@ else
     echo -e "${YELLOW}ℹ️  安全组已存在: $SECURITY_GROUP_ID${NC}"
 fi
 
-# 3. 获取最新的 Amazon Linux 2 AMI
+# 3. 获取最新的 Amazon Linux 2023 AMI
 echo -e "\n${YELLOW}📝 步骤 3: 获取 AMI${NC}"
 AMI_ID=$(aws ec2 describe-images \
     --owners amazon \
-    --filters "Name=name,Values=amzn2-ami-hvm-*-x86_64-gp2" \
+    --filters "Name=name,Values=al2023-ami-*-x86_64" \
     --query 'sort_by(Images, &CreationDate)[-1].ImageId' \
     --output text \
     --region $REGION)
