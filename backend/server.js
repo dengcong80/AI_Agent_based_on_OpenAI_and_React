@@ -1,5 +1,21 @@
 // backend/server.js
 require('dotenv').config();
+
+// 验证环境变量是否已解密
+console.log('=== 环境变量加载状态 ===')
+console.log('OPENAI_API_KEY:', process.env.OPENAI_API_KEY || '❌ 未加载')
+console.log('OPENAI_MODEL:', process.env.OPENAI_MODEL || '❌ 未加载')
+console.log('PINECONE_API_KEY:', process.env.PINECONE_API_KEY || '❌ 未加载')
+console.log('PINECONE_INDEX_NAME:', process.env.PINECONE_INDEX_NAME || '❌ 未加载')
+
+// 显示前几个字符（调试用，不要显示完整密钥）
+if (process.env.OPENAI_API_KEY) {
+  console.log('OPENAI_API_KEY 前10位:', process.env.OPENAI_API_KEY.substring(0, 10) + '...')
+}
+
+console.log('========================\n')
+
+
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
